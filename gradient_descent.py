@@ -33,9 +33,9 @@ from linear_algebra import Vector, dot
 # - take a small step in the gradient direction and repeat
 #
 
-# #### Estimating the Gradient
+# #### Estimating the Gradient and know as gradient checking
 
-# Take the function below with one variable. It's derivative at a point x measures how f(x) changes when a make a small change to f(x)
+# Take the function below with one variable. It's derivative at a point x measures how f(x) changes when a make a small change to f(x). 
 
 def sum_of_squares(v: Vector) -> float:
     """ Computes the sum of squared elements in v """
@@ -208,7 +208,7 @@ T = TypeVar('T') # this allows us to type generic functions more in the book pag
 
 def minibatches(dataset : List[T], batch_size: int, shuffle: bool = True) -> Iterator[List[T]]:
     """Generates 'batch_size' minibatches from the dataset"""
-    # start indexes 0, batch_size, 2 * batch_size
+    # start indexes 0, batch_size, 2 * batch_size...
     batch_starts = [start for start in range(0, len(dataset), batch_size)]
     
     if shuffle: random.shuffle(batch_starts) # shuffle the batches
@@ -231,6 +231,40 @@ for epoch in range(1000): # for each epoch we update theta len(datase)/ batch_si
                            for x, y in batch])
         theta = gradient_step(theta, grad, -learning_rate)
     print(epoch, theta)
+
+slope, intercept = theta
+assert 19.9 < slope < 20.1 , "slope should be around 20"
+assert 4.9 < intercept < 5.1, "intercept should be around 5"
 # -
+# #### Stochastic Gradient Descent  
+
+# Another variation is stochastic gradient descent, where gradient steps are taken based on one training example at a time
+
+# +
+theta = [random.uniform(-1, 1), random.uniform(-1, 1)]
+
+random.shuffle(inputs) #not on book; input observations need to be shuffled
+for epoch in range(100):
+    for x, y in inputs:
+        grad = linear_gradient(x, y, theta)
+        theta = gradient_step(theta, grad, -learning_rate)
+    print(epoch, theta)
+
+slope, intercept = theta
+
+slope, intercept = theta
+assert 19.9 < slope < 20.1 , "slope should be around 20"
+assert 4.9 < intercept < 5.1, "intercept should be around 5"
+# -
+
+
+
+
+
+
+
+
+
+
 
 
