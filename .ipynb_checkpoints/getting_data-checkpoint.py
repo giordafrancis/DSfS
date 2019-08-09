@@ -60,7 +60,7 @@ with open('data/email_addresses.txt', 'w') as f:
     f.write("this is a fake line\n")
     f.write("joelgrus@m.datasciencester.com\n")
     f.write("joel@hotmail.com\n")
-
+    
 
 # +
 from collections import Counter
@@ -89,6 +89,7 @@ def process_row(closing_price:float) -> float:
     return closing_price > 61
 
 
+# +
 with open('data/colon_delimited_stock_prices.txt') as f:
     colon_reader  = csv.DictReader(f, delimiter = ":")
     for dict_row in colon_reader:
@@ -98,6 +99,9 @@ with open('data/colon_delimited_stock_prices.txt') as f:
         closing_price = float(dict_row["closing_price"])
         bigger_61 = process_row(closing_price)
         print(bigger_61)
+        
+      
+# -
 
 today_prices = { 'AAPL' : 90.91, 'MSFT' : 41.68, 'FB' : 64.5 }
 
@@ -121,6 +125,8 @@ github_user = "giordafrancis"
 endpoint = f"https://api.github.com/users/{github_user}"
 
 repos = json.loads(requests.get(endpoint).text)
+repos
+
 repos
 
 
