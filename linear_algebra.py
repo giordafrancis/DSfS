@@ -60,7 +60,7 @@ assert scalar_multiply(2, [1, 2, 3]) == [2, 4, 6]
 
 
 def vector_mean(vectors: List[Vector]) -> Vector:
-    """Computes teh element-wise average"""
+    """Computes the element-wise average"""
     n = len(vectors)
     return scalar_multiply(1/n, vector_sum(vectors))
 
