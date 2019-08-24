@@ -48,6 +48,7 @@ def vector_sum(vectors:List[Vector]) -> Vector:
             for i in range(num_elements)]
 
 
+
 assert vector_sum([[1,2], [3, 4], [5, 6], [7,8]]) == [16,20]
 
 
