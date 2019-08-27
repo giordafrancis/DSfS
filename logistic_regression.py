@@ -36,6 +36,8 @@ learning_rate = 0.001
 rescaled_xs = rescale(xs)
 theta = least_squares_fit(rescaled_xs, ys, learning_rate, 1000, 1)
 
+ys
+
 theta
 
 predictions = [predict(x_i, theta) for x_i in rescaled_xs]
@@ -118,7 +120,7 @@ def _negative_log_gradient(x: Vector, y: float, theta: Vector) -> Vector:
 
 def negative_log_gradient(xs: List[Vector], ys: List[float], theta: Vector) -> Vector:
     return vector_sum([_negative_log_gradient(x, y, theta) for x, y in zip(xs, ys)])
-    
+
 
 # -
 
@@ -142,7 +144,9 @@ for epoch in range(5000):
     print(f"epoch {epoch}; loss {loss:.3f}")
 # -
 
-[round(theta_i, 1) for theta_i in theta]
+
+
+theta
 
 # +
 # transform back to the original data
@@ -175,7 +179,7 @@ for x_i, y_i in zip(x_test, y_test):
         fp += 1
     else:
         tn += 1                        # tn: unpaid and predicted unpaid
-        
+
 
 # +
 precision = tp / (tp + fp)

@@ -73,7 +73,8 @@ assert error_point([1,3], 4, [1,1]) == 0
 # +
 def sum_sq_error(data: List[List[Vector]], theta: Vector) -> float:
     """Computer sum of square error for all xs, ys pairs """
-    return sum(error_point(x, y, theta) ** 2 for x, y in data)
+    m = len(data)
+    return (1/ (2 * m)) * sum(error_point(x, y, theta) ** 2 for x, y in data)
     
 def gradient(x: List[Vector], y: float, theta: Vector) -> List:
     """Calculates the gradient update for 1 point for theta """
@@ -126,15 +127,15 @@ def least_squares_fit(xs: List[float], ys: List[float] ,
     data = [[x, y] for x, y in zip(xs, ys)]     # zip data structure  
     n = len(xs[0])                              # number of features
     theta = [random.random() for _ in range(n)] # random guess for theta
-    m = len(xs)                                 # number trainning examples
+                                                # number trainning examples
     loss = []                                   # to plot the avg. loss per epoch
     
     for epoch in range(epochs):
         chunks_loss = []                                # for avg. loss
         for chunk in chunks(data, batch_size):
             grad = evaluate_gradient(chunk, theta)      # evaluate the gradient    
-            theta = theta_update(theta, grad, alpha) # update theta 
-            loss_per_chunk = (1/ (2 * m)) * sum_sq_error(chunk, theta)  # loss per chunk iter
+            theta = theta_update(theta, grad, alpha)    # update theta 
+            loss_per_chunk = sum_sq_error(chunk, theta)  # loss per chunk iter
             chunks_loss.append(loss_per_chunk)                          
         
         average_epoch_loss = sum(chunks_loss) / len(chunks_loss)       

@@ -394,4 +394,4 @@ theta_0, theta_1
 
 b, m
 
-# I will attemp a multivariate least squares fit in the next notebook based on bacth_gradiendednt descent updat
+# I will attemp a multivariate least squares fit in the next notebook based on batch-gradient descent update
