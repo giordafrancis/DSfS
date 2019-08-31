@@ -132,4 +132,7 @@ theta  = negative_log_fit(rescaled_xs, ys, 0.01, 1000, 5)
 
 theta
 
+y_hats = [predict_point_logit(x, theta) for x in rescaled_xs]
+[(yhat, y) for yhat, y in zip(y_hats, ys)]
+
 
