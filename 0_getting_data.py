@@ -13,7 +13,7 @@
 #     name: python3
 # ---
 
-# #### stdin and stdout **Not so for me now relevant so skipped**
+# #### stdin and stdout ** skipped**
 #
 # piping data at the command line if you run Python scripts through it. 
 
