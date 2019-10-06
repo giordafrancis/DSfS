@@ -1,5 +1,4 @@
-Data Science from Scratch Code Along repo
+Data Science from Scratch
 
-I'm coding along the book and adding notes.
-
-test
+Based on Joel Grus book of the same name 2nd edition and Master machine learning algorithms, I'm studying the most common
+machine learning algorithms, adding relevant notes and coding along.   
